@@ -1,0 +1,71 @@
+package com.ustglobal.jdbcpsm;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+public class DynamicUpdate{
+
+	public static void main(String[] args) throws ClassNotFoundException  {
+
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+
+		try {
+
+			//			Driver driver=new Driver();
+			//			DriverManager.registerDriver(driver);
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			String url="jdbc:mysql://localhost:3306/ust_ty_db?user=root&password=root";
+			conn=DriverManager.getConnection(url,"root","root");
+
+			String sql="update emp set name=?,salary=?,gender=? where id=?";
+			pstmt=conn.prepareStatement(sql);
+			
+			
+			String eid=args[0];
+			int id=Integer.parseInt(eid);
+			pstmt.setInt(4, id);
+			
+			String name=args[1];
+			pstmt.setString(1, name);
+			
+			String esalary=args[2];
+			int salary=Integer.parseInt(esalary);
+			pstmt.setInt(2, salary);
+			
+			String gender=args[3];
+			pstmt.setString(3, gender);
+			
+			
+			int count=pstmt.executeUpdate();
+			System.out.println("updated....");
+
+		}catch(SQLException e) {
+			System.out.println("exception");
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null) {
+					conn.close();
+				}
+				if(pstmt!=null) {
+					pstmt.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+
+
+	}
+
+}

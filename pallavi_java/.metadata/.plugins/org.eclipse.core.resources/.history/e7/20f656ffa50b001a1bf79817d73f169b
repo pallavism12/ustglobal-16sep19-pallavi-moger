@@ -1,0 +1,10 @@
+package com.ustglobal.jpawithhibernetapp2.dto;
+
+public class EmployeeInfo {
+
+	private int id;
+	private String name;
+	private int sal;
+	private String gender;
+	
+}

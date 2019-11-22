@@ -1,0 +1,47 @@
+package com.ustglobal.empappexercise.app;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+import com.udtglobal.empappexercise.util.EmployeeManager;
+import com.ustglobal.empappexercise.dao.EmployeeDAO;
+import com.ustglobal.empappexercise.dto.EmployeeBean;
+
+public class App {
+	
+	public static void main(String[] args) {
+		System.out.println("press 1 to get all emp details");
+		System.out.println("press 2 to insert emp details");
+		System.out.println("press 1 to update emp details");
+		System.out.println("press 1 to delete emp details");
+		System.out.println("press 1 to search emp details");
+		
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+		
+		switch(ch) {
+		case 1:EmployeeDAO impl1=EmployeeManager.getEmployeeDao();
+		 List<EmployeeBean> result= impl1.getAllEmployeeData();
+		 
+		 for(EmployeeBean bean:result) {
+			 System.out.println("id:"+bean.getId());
+			 System.out.println("name:"+bean.getName());
+			 System.out.println("salary:"+bean.getSal());
+			 System.out.println("id"+bean.getId());
+		 }
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		}
+	}
+
+}

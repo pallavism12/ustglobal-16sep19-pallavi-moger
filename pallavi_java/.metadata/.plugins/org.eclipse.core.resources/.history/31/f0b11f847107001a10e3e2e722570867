@@ -1,0 +1,32 @@
+package com.ustglobal.empwebapp.dao;
+
+import com.ustglobal.empwebapp.dto.EmployeeInfo;
+
+public class EmployeeDaoJdbcImpl implements EmployeeDAO {
+
+	@Override
+	public EmployeeInfo auth(int id, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmployeeInfo searchEmployee(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean changePassword(int id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean registerEmployee(EmployeeInfo info) {
+		String sql="insert into employee_db values(?,?,?,>)";
+		String url="jdbc:mysql://localhost:3306/ust_ty_web_db?user=root&password=root";
+		return false;
+	}
+	
+}

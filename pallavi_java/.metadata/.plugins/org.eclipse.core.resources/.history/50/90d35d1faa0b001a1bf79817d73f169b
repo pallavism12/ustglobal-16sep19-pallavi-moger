@@ -1,0 +1,19 @@
+package com.ustglobal.jpawithhibernetapp2;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class ExecuteRead {
+	
+	public static void main(String[] args) {
+		
+	
+	try {
+		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("TestPersistence");
+		
+	}catch(Ex) {
+		
+	}
+
+}
+}

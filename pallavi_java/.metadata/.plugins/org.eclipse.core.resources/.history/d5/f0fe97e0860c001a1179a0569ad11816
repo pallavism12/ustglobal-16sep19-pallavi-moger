@@ -1,0 +1,5 @@
+package com.ustglobal.jdbcpsm;
+
+public class DynamicUpdate {
+
+}

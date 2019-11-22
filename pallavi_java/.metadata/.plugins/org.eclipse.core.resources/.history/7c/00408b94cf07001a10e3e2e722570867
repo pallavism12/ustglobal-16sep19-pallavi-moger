@@ -1,0 +1,12 @@
+package com.udtglobal.empappexercise.util;
+
+import com.ustglobal.empappexercise.dao.EmployeeDAO;
+
+public class EmployeeManager {
+	private EmployeeManager() {}
+	
+	public static EmployeeDAO getEmployeeDao() {
+		return new EmployeeDaoImpl();
+	}
+
+}

@@ -1,0 +1,47 @@
+package com.ustglobal.jpawithhibernetapp2.psm;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mysql.jdbc.Driver;
+
+public class ExecuteInsert {
+	public static void main(String[] args) {
+		Connection conn=null;
+		Statement stmt=null;
+
+
+		try {
+			//load the driver
+			Driver driver=new Driver();
+			DriverManager.registerDriver(driver);
+			
+			//get the connection
+			String url="jdbc:mysql://localhost:3306/ust_ty_db?user=root&password=root";
+			conn=DriverManager.getConnection(url);
+			
+			//issue sql query
+			String sql="insert into employee values(6,'vani',40000,'f')";
+			stmt=conn.createStatement();
+			int count=stmt.executeUpdate(sql);
+			
+			//read result set
+			System.out.println(count +" rows inserted");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null) {
+					conn.close();
+
+				}
+				if(stmt!=null) {
+					stmt.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

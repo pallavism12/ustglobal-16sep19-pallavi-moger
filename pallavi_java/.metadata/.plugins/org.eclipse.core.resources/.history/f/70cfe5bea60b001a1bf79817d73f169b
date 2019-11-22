@@ -1,0 +1,28 @@
+package com.ustglobal.jpawithhibernetapp2.dto;
+
+import javax.persistence.EntityManagerFactory;
+
+public class ExecuteInsert {
+	
+	public static void main(String[] args) {
+		
+		EmployeeInfo employeeInfo=new EmployeeInfo();
+		employeeInfo.setId(3);
+		employeeInfo.setName("shriya");
+		employeeInfo.setSal(10000);
+		employeeInfo.setGender("f");
+		
+		
+		
+	try {
+		
+		EntityManagerFactory entityManagerFactory=P
+		
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		
+		
+	}
+
+}

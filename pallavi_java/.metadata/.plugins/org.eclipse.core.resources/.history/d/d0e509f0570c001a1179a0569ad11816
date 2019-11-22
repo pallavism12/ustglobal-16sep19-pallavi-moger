@@ -1,0 +1,8 @@
+package com.ustglobal.jpawithhibernetapp.onetoone;
+
+public class Person {
+	private int pid;
+	private String name;
+	
+
+}

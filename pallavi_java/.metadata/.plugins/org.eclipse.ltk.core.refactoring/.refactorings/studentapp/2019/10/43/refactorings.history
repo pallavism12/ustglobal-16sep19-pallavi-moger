@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.ustglobal.studentapp.qspiders.Angular&apos; to &apos;Selenium&apos;&#x0D;&#x0A;- Original project: &apos;studentapp&apos;&#x0D;&#x0A;- Original element: &apos;com.ustglobal.studentapp.qspiders.Angular&apos;&#x0D;&#x0A;- Renamed element: &apos;com.ustglobal.studentapp.qspiders.Selenium&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Angular&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.ustglobal.studentapp.qspiders{Angular.java[Angular" matchStrategy="1" name="Selenium" qualified="false" references="true" similarDeclarations="false" stamp="1571902132489" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,7 @@
+package com.ustglobal.jdbcpsm.util;
+
+import com.ustglobal.jdbcpsm.dao.EmployeeDAO;
+
+public class EmployeeManager implements EmployeeDAO {
+
+}

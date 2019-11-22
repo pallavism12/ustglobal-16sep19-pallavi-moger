@@ -1,0 +1,32 @@
+package com.ustglobal.empwebappexercise.dao;
+
+import com.ustglobal.empwebappexercise.dto.EmployeeInfo;
+
+public class EmployeeDaoJdbcImpl implements EmployeeDAO{
+	
+	
+	
+	public boolean register(EmployeeInfo info){
+		
+	}
+
+	@Override
+	public EmployeeInfo auth(int id, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmployeeInfo search(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean changepassword(int id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+}

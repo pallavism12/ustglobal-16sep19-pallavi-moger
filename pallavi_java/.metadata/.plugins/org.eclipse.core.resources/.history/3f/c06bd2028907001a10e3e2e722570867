@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<form action="./" >
+<table>
+
+<tr>
+
+<td>Id</td>
+<td><input name="id" type="number"></td> <br>
+</tr>
+
+password:<input name="password" type="password"> <br>
+
+<input type="checkbox" style="text-align: center; " > <br>
+<input type="submit" value="login" style=" text-align: center;"> <br>
+<a href="register.html"  style="text-align: left; ">register</a>
+
+</form>
+</table>
+</body>
+</html>

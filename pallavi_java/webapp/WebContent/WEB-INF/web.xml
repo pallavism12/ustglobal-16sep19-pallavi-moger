@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>webapp</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>company-name</param-name>
+		<param-value>ustglobal</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>firstServlet</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.MyFirstServlet</servlet-class>
+		<init-param>
+			<param-name>batch-name</param-name>
+			<param-value>ustglobal1</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>firstServlet</servlet-name>
+		<url-pattern>/first</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>formServlet</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.FormServlet</servlet-class>
+		<init-param>
+			<param-name>batch-name</param-name>
+			<param-value>ustglobal2</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>formServlet</servlet-name>
+		<url-pattern>/form</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>redirect</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.RedirectServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>redirect</servlet-name>
+		<url-pattern>/redirect</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>farword</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.ForwordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>farword</servlet-name>
+		<url-pattern>/farword</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>include</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.IncludeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>include</servlet-name>
+		<url-pattern>/include</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>form-farword</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.FormFarwordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>form-farword</servlet-name>
+		<url-pattern>/form-farword</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>createCookie</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.CreateCookieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createCookie</servlet-name>
+		<url-pattern>/createCookie</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>readCookie</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.ReadCookieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>readCookie</servlet-name>
+		<url-pattern>/readCookie</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>emp</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.EmployeeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>emp</servlet-name>
+		<url-pattern>/emp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>setContextAttribute</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.SetContextAttributeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>setContextAttribute</servlet-name>
+		<url-pattern>/setContextAttribute</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getContextAttribute</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.GetCnotextAttributeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>getContextAttribute</servlet-name>
+		<url-pattern>/getContextAttribute</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>delete-cookie</servlet-name>
+		<servlet-class>com.ustglobal.webapp.servelet.DeleteookieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>delete-cookie</servlet-name>
+		<url-pattern>/delete-cookie</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+
+</web-app>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>psm</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>cn</param-name>
+		<param-value>UST</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>fi</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.First</servlet-class>
+		<init-param>
+			<param-name>bn</param-name>
+			<param-value>ust1</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>fi</servlet-name>
+		<url-pattern>/first</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>se</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.Second</servlet-class>
+		<init-param>
+			<param-name>bn</param-name>
+			<param-value>ust2</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>se</servlet-name>
+		<url-pattern>/second</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>forms</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.Form</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>forms</servlet-name>
+		<url-pattern>/forms</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>re</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.Redirect</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>re</servlet-name>
+		<url-pattern>/re</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>for</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.Forward</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>for</servlet-name>
+		<url-pattern>/for</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>inc</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.Include</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>inc</servlet-name>
+		<url-pattern>/inc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>cc</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.CreateC</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cc</servlet-name>
+		<url-pattern>/cc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>dc</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.DeleteC</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dc</servlet-name>
+		<url-pattern>/dc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>rc</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.ReadC</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>rc</servlet-name>
+		<url-pattern>/rc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>get</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.GetAtt</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>get</servlet-name>
+		<url-pattern>/get</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>set</servlet-name>
+		<servlet-class>com.ustglobal.psm.servlet.SetAttr</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>set</servlet-name>
+		<url-pattern>/set</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+</web-app>

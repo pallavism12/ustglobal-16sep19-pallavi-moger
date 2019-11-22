@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<fieldset align="center">
+
+
+<form action="./" >
+<table>
+<tr>
+<td>search by Id</td>
+<td><input type="number" name="id"></td>
+</tr>
+
+<tr>
+<td></td>
+<td><input type="submit" value="search"></td>
+</tr>
+
+</table>
+</form>
+</fieldset>
+</body>
+</html>

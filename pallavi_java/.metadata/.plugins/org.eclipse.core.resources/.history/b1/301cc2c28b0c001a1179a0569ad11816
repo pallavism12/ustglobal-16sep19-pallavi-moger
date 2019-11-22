@@ -1,0 +1,5 @@
+package com.ustglobal.jdbcpsm.dao;
+
+public interface EmployeeDAO {
+
+}

@@ -1,0 +1,5 @@
+package com.ustglobal.empwebappexercise.dto;
+
+public class EmployeeInfo {
+
+}

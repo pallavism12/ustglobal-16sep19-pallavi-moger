@@ -1,0 +1,28 @@
+package com.ustglobal.jpawithhibernetapp.jpql;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class UpdateDemo {
+	
+	public static void main(String[] args) {
+		
+		
+
+		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("TestPersistence");
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+
+		//String jpql="from ProductInfo";
+		
+		String jpql="update ProductInfo set  pname='mouse' where pid=3";
+		Query query =entityManager.createQuery(jpql);
+		 int res=query.executeUpdate();
+		 System.out.println(res);
+		
+		
+		
+	}
+
+}

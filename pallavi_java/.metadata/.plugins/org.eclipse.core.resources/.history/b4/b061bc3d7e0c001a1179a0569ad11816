@@ -1,0 +1,20 @@
+package com.ustglobal.jdbcpsm;
+
+import java.sql.ResultSet;
+
+import com.mysql.*;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+public class Select {
+	
+	public static void main(String[] args) {
+		
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		
+	}
+
+}

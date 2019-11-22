@@ -1,0 +1,5 @@
+package com.ustglobal.empappexercise.dto;
+
+public class EmployeeBean {
+
+}

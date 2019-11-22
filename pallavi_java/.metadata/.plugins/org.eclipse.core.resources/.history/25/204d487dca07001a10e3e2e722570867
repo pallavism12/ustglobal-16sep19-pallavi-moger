@@ -1,0 +1,5 @@
+package com.ustglobal.empappexercise.dao;
+
+public interface EmployeeDAO {
+
+}

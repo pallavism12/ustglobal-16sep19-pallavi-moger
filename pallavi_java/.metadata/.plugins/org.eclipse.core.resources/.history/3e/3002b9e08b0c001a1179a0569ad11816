@@ -1,0 +1,5 @@
+package com.ustglobal.jdbcpsm.dto;
+
+public class EmployeeBean {
+
+}

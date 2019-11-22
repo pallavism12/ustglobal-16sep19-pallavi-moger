@@ -1,0 +1,13 @@
+package com.ustglobal.jpawithhibernetapp.onetoone;
+
+import javax.persistence.Entity;
+
+@Entity
+public class VoterCard {
+	
+	private int vid;
+	
+	
+	private String vname;
+
+}

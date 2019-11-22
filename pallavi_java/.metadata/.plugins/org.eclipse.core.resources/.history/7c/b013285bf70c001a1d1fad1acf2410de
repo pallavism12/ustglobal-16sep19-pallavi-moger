@@ -1,0 +1,5 @@
+package com.ustglobal.jpawithhibernetapp.manytone;
+
+public class PencilBox {
+
+}

@@ -1,0 +1,5 @@
+package com.ustglobal.jpawithhibernetapp2.psm;
+
+public class ExecuteSelect {
+
+}

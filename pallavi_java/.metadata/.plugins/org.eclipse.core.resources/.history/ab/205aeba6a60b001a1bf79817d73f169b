@@ -1,0 +1,16 @@
+package com.ustglobal.jpawithhibernetapp2.dto;
+
+public class ExecuteInsert {
+	
+	public static void main(String[] args) {
+		
+		EmployeeInfo employeeInfo=new EmployeeInfo();
+		employeeInfo.setId(3);
+		employeeInfo.setName("shriya");
+		employeeInfo.setSal(10000);
+		employeeInfo.setGender("f");
+		
+		
+	}
+
+}
