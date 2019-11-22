@@ -1,0 +1,55 @@
+form{
+    border: 3px solid red;
+    width: 550px;
+    height: 700px;
+    color: greenyellow;
+    
+    margin:100px;
+    text-align: center;
+    font-size: 50px;
+    font-family:fantasy;
+    border-radius: 5px;
+    background-image: url(/image/giphy.gif);
+    background-size: cover;
+    color:rgb(255, 20, 147);
+
+
+
+    
+}
+body{
+
+    background-image: url(/image/coffe-4289545__340.jpg);
+    background-size:cover;
+    color:seagreen;
+}
+/* attribute selector */
+input[type="text"], input[type="passward"]
+{
+    width: 225px;
+    height:25px ;
+    border: 2px solid red;
+    border-radius: 70px;
+    text-align: center;
+    font-size: 15px;
+    outline: none;
+}
+/* pseudo selector :if we perform the activities on that,then it shows the result
+/* input[type="text"], input[type="passward"]
+{
+outline:none;
+} */
+input[type="submit"]
+{
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color:crimson;
+    outline: none;
+    color: wheat;
+}
+input[type="submit"]:hover{
+    background-color: blueviolet;
+    border: 2px solid  blue;
+}
+{

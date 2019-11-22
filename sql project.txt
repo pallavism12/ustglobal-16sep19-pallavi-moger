@@ -1,0 +1,1498 @@
+11/10/2019
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db_name            |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use db_name;
+Database changed
+mysql> show tables;
+Empty set (0.03 sec)
+
+//DDL
+mysql> create table product(pid int,pname varchar(20),quantity int);
+Query OK, 0 rows affected (1.23 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_db_name |
++-------------------+
+| product           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(20) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.11 sec)
+
+mysql> drop database db_name;
+Query OK, 1 row affected (0.52 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database ustglobal;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| ustglobal          |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use ustglobal;
+Database changed
+mysql> create table product(pid int,pname varchar(20),quantity int);
+Query OK, 0 rows affected (0.42 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| product             |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(20) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table product add column price int;
+Query OK, 0 rows affected (0.97 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(20) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
+| price    | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table product change column price cost int;
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(20) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
+| cost     | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table product drop column cost;
+Query OK, 0 rows affected (0.67 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(20) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> rename table product to products;
+Query OK, 0 rows affected (0.54 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| products            |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> rename table products to product_info;
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| product_info        |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> rename database ustglobal to ust;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to 
+your MySQL server version for the right syntax to use near 'database ustglobal to ust' at line 1
+
+
+//DML
+mysql> insert into product_info(pid,pname,quantity)values(100,'pen',10);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from product_info;
++------+-------+----------+
+| pid  | pname | quantity |
++------+-------+----------+
+|  100 | pen   |       10 |
++------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into product_info(pid,pname,quantity)values(200,'pencil',20);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
++------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into product_info values(100,'pen',10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
+|  100 | pen    |       10 |
++------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into product_info values(300,'book',30);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
+|  100 | pen    |       10 |
+|  300 | book   |       30 |
++------+--------+----------+
+4 rows in set (0.02 sec)
+
+mysql> insert into product_info(pid,pname)values(400,'laptop');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
+|  100 | pen    |       10 |
+|  300 | book   |       30 |
+|  400 | laptop |     NULL |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into product_info(pid,pname,quantity)values(500,'mobile',50),(500,'card',60);
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
+|  100 | pen    |       10 |
+|  300 | book   |       30 |
+|  400 | laptop |     NULL |
+|  500 | mobile |       50 |
+|  500 | card   |       60 |
++------+--------+----------+
+7 rows in set (0.00 sec)
+
+
+mysql> delete from product_info;
+Query OK, 7 rows affected (0.14 sec)
+
+mysql> select * from product_info;
+Empty set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| product_info        |
++---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> insert into product_info values(100,'pen',10);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from product_info;
++------+-------+----------+
+| pid  | pname | quantity |
++------+-------+----------+
+|  100 | pen   |       10 |
++------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into product_info values(100,'pen',10),(200,'pencil',20);
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into product_info values(300,'book',30),(400,'chair',50);
+Query OK, 2 rows affected (0.14 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | pen    |       10 |
+|  100 | pen    |       10 |
+|  200 | pencil |       20 |
+|  300 | book   |       30 |
+|  400 | chair  |       50 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+
+mysql> select pname from product_info;
++--------+
+| pname  |
++--------+
+| pen    |
+| pen    |
+| pencil |
+| book   |
+| chair  |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> create table employee(eid int ,name varchar(50) not null,mobile int unique,dob date not null,age int,
+doj date,blood_group varchar(50),depno int,salary int,email varchar(150),gender varchar(50),primary key(eid));
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> desc employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| eid         | int(11)      | NO   | PRI | NULL    |       |
+| name        | varchar(50)  | NO   |     | NULL    |       |
+| mobile      | int(11)      | YES  | UNI | NULL    |       |
+| dob         | date         | NO   |     | NULL    |       |
+| age         | int(11)      | YES  |     | NULL    |       |
+| doj         | date         | YES  |     | NULL    |       |
+| blood_group | varchar(50)  | YES  |     | NULL    |       |
+| depno       | int(11)      | YES  |     | NULL    |       |
+| salary      | int(11)      | YES  |     | NULL    |       |
+| email       | varchar(150) | YES  |     | NULL    |       |
+| gender      | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| employee            |
+| product_info        |
++---------------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table employee add column designation varchar(100);
+Query OK, 0 rows affected (0.69 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| employee            |
+| product_info        |
++---------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| eid         | int(11)      | NO   | PRI | NULL    |       |
+| name        | varchar(50)  | NO   |     | NULL    |       |
+| mobile      | int(11)      | YES  | UNI | NULL    |       |
+| dob         | date         | NO   |     | NULL    |       |
+| age         | int(11)      | YES  |     | NULL    |       |
+| doj         | date         | YES  |     | NULL    |       |
+| blood_group | varchar(50)  | YES  |     | NULL    |       |
+| depno       | int(11)      | YES  |     | NULL    |       |
+| salary      | int(11)      | YES  |     | NULL    |       |
+| email       | varchar(150) | YES  |     | NULL    |       |
+| gender      | varchar(50)  | YES  |     | NULL    |       |
+| designation | varchar(100) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)
+
+
+mysql> insert into employee values(1,'a',98765,'1997-12-09',21,'2019-09-10','a+',10,20000,'psm@gmail.com','female','developer');
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert into employee values(2,'b',87654,'1996-12-09',22,'2018-09-10','b+',20,30000,'pallavi@gmail.com','female','testing');
+Query OK, 1 row affected (0.36 sec)
+
+mysql> insert into employee values(3,'c',87563,'1998-12-09',25,'2019-12-10','o+',30,30000,'pavi@gmail.com','female','tecksupport');
+Query OK, 1 row affected (0.36 sec)
+
+mysql> insert into employee values(4,'d',89456,'1995-12-01',25,'2018-12-10','o+',34,50000,'well@gmail.com','male','hr');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into employee values(5,'e',97543,'1998-11-05',20,'2019-03-10','a-',40,10000,'qsp@gmail.com','male','manager');
+Query OK, 1 row affected (0.74 sec)
+
+mysql> insert into employee values(6,'f',78954,'1995-04-05',50,'2016-03-10','b-',50,80000,'jsp@gmail.com','female','clerk');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into employee values(7,'g',65754,'1999-04-05',30,'2015-02-10','a-',30,20000,'psp@gmail.com','female','developer');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into employee values(8,'h',76841,'2000-07-05',25,'2019-02-10','a-',40,20000,'ssp@gmail.com','male','testing');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into employee values(9,'i',99882,'1996-07-05',25,'2019-02-10','a-',50,20000,'rwp@gmail.com','male','tecksupport');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into employee values(10,'j',64098,'1995-07-05',29,'2019-02-19','b+',40,60000,'hfg@gmail.com','female','hr');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> desc employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| eid         | int(11)      | NO   | PRI | NULL    |       |
+| name        | varchar(50)  | NO   |     | NULL    |       |
+| mobile      | int(11)      | YES  | UNI | NULL    |       |
+| dob         | date         | NO   |     | NULL    |       |
+| age         | int(11)      | YES  |     | NULL    |       |
+| doj         | date         | YES  |     | NULL    |       |
+| blood_group | varchar(50)  | YES  |     | NULL    |       |
+| depno       | int(11)      | YES  |     | NULL    |       |
+| salary      | int(11)      | YES  |     | NULL    |       |
+| email       | varchar(150) | YES  |     | NULL    |       |
+| gender      | varchar(50)  | YES  |     | NULL    |       |
+| designation | varchar(100) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  98765 | 1997-12-09 |   21 | 2019-09-10 | a+          |    10 |  20000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  87654 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  89456 | 1995-12-01 |   25 | 2018-12-10 | o+          |    34 |  50000 | well@gmail.com    | male   | hr          |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> delete from employee where eid=4;
+Query OK, 1 row affected (0.39 sec)
+
+mysql> insert into employee values(4,'d',56790,'1994-07-05',29,'2019-02-19','b+',20,60000,'mty@gmail.com','female','testing');
+Query OK, 1 row affected (0.36 sec)
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  98765 | 1997-12-09 |   21 | 2019-09-10 | a+          |    10 |  20000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  87654 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+//truncate
+
+mysql> truncate product_info;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> select * from product_info;
+Empty set (0.00 sec)
+
+
+//distinct
+mysql> select distinct depno from employee;
++-------+
+| depno |
++-------+
+|    10 |
+|    20 |
+|    30 |
+|    40 |
+|    50 |
++-------+
+5 rows in set (0.03 sec)
+
+mysql> select distinct depno,designation from employee;
++-------+-------------+
+| depno | designation |
++-------+-------------+
+|    10 | developer   |
+|    20 | testing     |
+|    30 | tecksupport |
+|    40 | manager     |
+|    50 | clerk       |
+|    30 | developer   |
+|    40 | testing     |
+|    50 | tecksupport |
+|    40 | hr          |
++-------+-------------+
+9 rows in set (0.00 sec)
+
+mysql>
+//alias
+mysql> select mobile as mobile_no from employee;
++-----------+
+| mobile_no |
++-----------+
+|     56790 |
+|     64098 |
+|     65754 |
+|     76841 |
+|     78954 |
+|     87563 |
+|     87654 |
+|     97543 |
+|     98765 |
+|     99882 |
++-----------+
+10 rows in set (0.03 sec)
+
+mysql> select depno  dep_no from employee;
++--------+
+| dep_no |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     20 |
+|     40 |
+|     50 |
+|     30 |
+|     40 |
+|     50 |
+|     40 |
++--------+
+10 rows in set (0.00 sec)
+
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  98765 | 1997-12-09 |   21 | 2019-09-10 | a+          |    10 |  20000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  87654 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+
+//update
+mysql> update employee set mobile=91122 where eid=2;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  98765 | 1997-12-09 |   21 | 2019-09-10 | a+          |    10 |  20000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> delete from employee where depno=10;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+9 rows in set (0.00 sec)
+
+mysql> insert into employee values(1,'a',56218,'1994-07-05',29,'2019-02-19','b+',10,60000,'psm@gmail.com','female','developer');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from employee;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee where eid=5;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com | male   | manager     |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+1 row in set (0.03 sec)
+
+
+//DQL(ARITHMATIC OPERATORS)
+mysql> select salary+5000 from employee;
++-------------+
+| salary+5000 |
++-------------+
+|       65000 |
+|       35000 |
+|       35000 |
+|       65000 |
+|       15000 |
+|       85000 |
+|       25000 |
+|       25000 |
+|       25000 |
+|       65000 |
++-------------+
+10 rows in set (0.03 sec)
+
+mysql> select salary-5000 from employee;
++-------------+
+| salary-5000 |
++-------------+
+|       55000 |
+|       25000 |
+|       25000 |
+|       55000 |
+|        5000 |
+|       75000 |
+|       15000 |
+|       15000 |
+|       15000 |
+|       55000 |
++-------------+
+10 rows in set (0.03 sec)
+
+mysql> select salary+5000 sal from employee;
++-------+
+| sal   |
++-------+
+| 65000 |
+| 35000 |
+| 35000 |
+| 65000 |
+| 15000 |
+| 85000 |
+| 25000 |
+| 25000 |
+| 25000 |
+| 65000 |
++-------+
+10 rows in set (0.00 sec)
+
+mysql> select salary-5000  dec_sal from employee;
++---------+
+| dec_sal |
++---------+
+|   55000 |
+|   25000 |
+|   25000 |
+|   55000 |
+|    5000 |
+|   75000 |
+|   15000 |
+|   15000 |
+|   15000 |
+|   55000 |
++---------+
+10 rows in set (0.00 sec)
+
+mysql> select salary+5000 inc_sal from employee;
++---------+
+| inc_sal |
++---------+
+|   65000 |
+|   35000 |
+|   35000 |
+|   65000 |
+|   15000 |
+|   85000 |
+|   25000 |
+|   25000 |
+|   25000 |
+|   65000 |
++---------+
+10 rows in set (0.00 sec)
+
+mysql> select salary*12 annual_salary from employee;
++---------------+
+| annual_salary |
++---------------+
+|        720000 |
+|        360000 |
+|        360000 |
+|        720000 |
+|        120000 |
+|        960000 |
+|        240000 |
+|        240000 |
+|        240000 |
+|        720000 |
++---------------+
+10 rows in set (0.03 sec)
+
+mysql> select salary/30 perday_salary from employee;
++---------------+
+| perday_salary |
++---------------+
+|     2000.0000 |
+|     1000.0000 |
+|     1000.0000 |
+|     2000.0000 |
+|      333.3333 |
+|     2666.6667 |
+|      666.6667 |
+|      666.6667 |
+|      666.6667 |
+|     2000.0000 |
++---------------+
+10 rows in set (0.03 sec)
+
+wq to display all the records of the emp where designation='developer'
+mysql> select * from employee where designation='developer';
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com | female | developer   |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+2 rows in set (0.01 sec)
+
+
+wq to display all the records of the emp excluding depno 20
+mysql> select * from employee where depno<>20;
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email          | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com  | female | developer   |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com  | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com  | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com  | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com  | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com  | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com  | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+8 rows in set (0.00 sec)
+
+wq to display rec of emp whose sal >10000
+mysql> select * from employee where salary>10000;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+9 rows in set (0.00 sec)
+
+
+wq to display result of emp whose age<30
+mysql> select * from employee where age<30;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+8 rows in set (0.00 sec)
+
+wq to display name,sal,email,mob whose age is equal to 28 or greater than 28
+mysql> select name, salary ,mobile,email  from employee where age>=28;
++------+--------+--------+---------------+
+| name | salary | mobile | email         |
++------+--------+--------+---------------+
+| a    |  60000 |  56218 | psm@gmail.com |
+| d    |  60000 |  56790 | mty@gmail.com |
+| f    |  80000 |  78954 | jsp@gmail.com |
+| g    |  20000 |  65754 | psp@gmail.com |
+| j    |  60000 |  64098 | hfg@gmail.com |
++------+--------+--------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee where salary<=40000;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+6 rows in set (0.00 sec)
+
+14/10/2019
+
+//and operator
+wq to display all the detail of the emp whose  depno=20 and salary>25000
+mysql> select * from employee where depno=20 and salary>25000;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+2 rows in set (0.06 sec)
+
+wq to display name,salary of the emp whose depno=10 and depno=20
+mysql> select name,salary from employee where depno=10 and depno=20;
+Empty set (0.00 sec)
+
+
+wq to display all the deatail of the emp whose designation='testing' and age=25
+mysql> select * from employee where designation='testing' and age=25;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com | male   | testing     |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+1 row in set (0.03 sec)
+
+//or operator
+wq to display all the records of the emp designation='testing' or salary>40000
+mysql> select * from employee where designation='testing' or salary>40000;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+6 rows in set (0.00 sec)
+
+wq to display name,age,salary of the emp whose depno=10 or depno=40 or depno=50
+mysql> select name,age,salary from employee where depno=10 or depno=40 or depno=50;
++------+------+--------+
+| name | age  | salary |
++------+------+--------+
+| a    |   29 |  60000 |
+| e    |   20 |  10000 |
+| f    |   50 |  80000 |
+| h    |   25 |  20000 |
+| i    |   25 |  20000 |
+| j    |   29 |  60000 |
++------+------+--------+
+
+wq to display name,age,salary of the emp whose depno=10 or depno=40 or depno=70
+mysql> select name,age,salary from employee where depno=10 or depno=40 or depno=70;
++------+------+--------+
+| name | age  | salary |
++------+------+--------+
+| a    |   29 |  60000 |
+| e    |   20 |  10000 |
+| h    |   25 |  20000 |
+| j    |   29 |  60000 |
++------+------+--------+
+
+wq to display all the detail of emp whose age>25 and blood_group='b+'
+mysql> select * from employee where age>25 and blood_group='b+' ;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com | female | testing     |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+
+//not operator
+wq to display all the detail of emp excluding testing.
+mysql> select * from employee where not designation='testing' ;
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email          | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com  | female | developer   |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com  | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com  | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com  | female | developer   |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com  | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com  | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+
+
+mysql> select * from employee where  designation !='testing' ;
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email          | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com  | female | developer   |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com  | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com  | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com  | female | developer   |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com  | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com  | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+
+wq to display name of the emp who is working as hr,testing and sal>40000
+mysql> select name  from employee where  (designation ='hr' or designation='testing') and salary>40000 ;
++------+
+| name |
++------+
+| d    |
+| j    |
++------+
+
+wq to display all the detail of emp excluding developer who are working in depno=40
+mysql> select *  from employee where not designation='developer' and depno=40 ;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com | male   | manager     |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com | male   | testing     |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+
+wq to display all the detail o developer who are working for depno=40 or depno=40
+mysql> select * from employee where designation='developer' and (depno=10 or depno=40);
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+1 row in set (0.00 sec)
+
+//special operator
+//IN:
+wq to display all the emp details who is working in depno in(40,50,70,80)
+mysql> select * from employee where depno in(40,50,70,80);
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com | female | clerk       |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+
+5 rows in set (0.13 sec)
+
+wq to display name of the emp details who is working as 'testing','hr','admin'
+mysql> select name from employee where designation in('testing','hr','admin');
++------+
+| name |
++------+
+| b    |
+| d    |
+| h    |
+| j    |
++------+
+4 rows in set (0.00 sec)
+
+wq to display the detail of  testre,admin ,developer who are working in deptno 20 or 30 and sal>40000.
+mysql> select * from employee where designation in('testing','developer','admin')  and depno in(20,30) and salary>40000 ;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com | female | testing     |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+1 row in set (0.00 sec)
+
+NOT IN:
+
+wq to display name of the emp details  excluding who is working as 'testing','hr','admin'
+mysql> select * from employee where designation not in('testing','hr','admin');
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email          | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com  | female | developer   |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com  | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com  | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com  | female | developer   |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com  | male   | tecksupport |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+6 rows in set (0.03 sec)
+
+
+wq to display all the  record of the emp whose age is 20,25,30,40 exclude all the detail of tester abd developer.
+mysql> select * from employee where age in(20,25,30,40) and designation not in('testing','developer');
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email          | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com  | male   | manager     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com  | male   | tecksupport |
++-----+------+--------+------------+------+------------+-------------+-------+--------+----------------+--------+-------------+
+3 rows in set (0.00 sec)
+
+//between operator
+wq to display all the detail of the emp whose age is b/w 20 to 40
+mysql> select * from employee where age between 20 and 40;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+9 rows in set (0.06 sec)
+
+wq to display all the detail of the emp  who are hired during 2017
+mysql> select * from employee where doj between '2017-01-01' and '2017-12-31';
+Empty set (0.09 sec)
+
+//not between
+
+wq to display all the detail of the emp excluding whose sal in the range of 25000 ,30000
+mysql> select * from employee where salary not between 25000 and 30000;
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+8 rows in set (0.00 sec)
+
+//Is not
+
+mysql> select * from employee where email is not null;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+---- --+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.03 sec)
+
+//like operator
+wq to display all the detail of the emp whose name starts with 'a'.
+mysql> select * from employee where name like 'a%';
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+1 row in set (0.03 sec)
+
+wq to display the name of the emp whose 2nd character is 'i'
+mysql> select * from employee where name like '_i%';
+Empty set (0.00 sec)
+
+wq to display the name of the emp which has atleast two l in their name
+mysql> select name from employee where name like '%l%l%';
+Empty set (0.00 sec)
+
+wq to display all the detail of the emp whose name starts with 's' and end with p.
+mysql> select name from employee where name like 's%p';
+Empty set (0.00 sec)
+
+wq to display all the detail of the emp whose name begin with a or s.
+mysql> select name from employee where name like 'a%' or name like 's';
++------+
+| name |
++------+
+| a    |
++------+
+1 row in set (0.00 sec)
+
+mysql> select name from employee where name like 'a%' or name like 'b';
++------+
+| name |
++------+
+| a    |
+| b    |
++------+
+2 rows in set (0.00 sec)
+
+wq to display name,sal who is working in depno 10,20,30 and job designation starts with s.
+mysql> select name,salary from employee where depno in(10,20,30) and  designation like 'a%' ;
+Empty set (0.00 sec)
+
+//functions
+multirow function
+mysql> select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.03 sec)
+
+mysql> select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       80000 |
++-------------+
+1 row in set (0.03 sec)
+
+mysql> select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+|       10000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|      390000 |
++-------------+
+1 row in set (0.05 sec)
+
+
+mysql> select sum(salary)/count(*) from employee;
++----------------------+
+| sum(salary)/count(*) |
++----------------------+
+|           39000.0000 |
++----------------------+
+1 row in set (0.03 sec)
+
+
+//order by
+wqtd all the result of the emp and salary should be in descending order.
+
+mysql> select * from employee order by salary desc;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   7 | g    |  65754 | 1999-04-05 |   30 | 2015-02-10 | a-          |    30 |  20000 | psp@gmail.com     | female | developer   |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+10 rows in set (0.06 sec)
+
+15/10/2019
+
+mysql> create table department(depno int,name varchar(50),location varchar(100),primary key(depno));
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ustglobal |
++---------------------+
+| department          |
+| employee            |
+| product_info        |
++---------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department;
+Empty set (0.00 sec)
+
+mysql> desc department;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| depno    | int(11)      | NO   | PRI | NULL    |       |
+| name     | varchar(50)  | YES  |     | NULL    |       |
+| location | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into department values(10,'admin','mumbai');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(20,'operations','hyderabad');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into department values(30,'maintanance','pune');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into department values(40,'development','bangalore');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(50,'admin','bangalore');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from department;
++-------+-------------+-----------+
+| depno | name        | location  |
++-------+-------------+-----------+
+|    10 | admin       | mumbai    |
+|    20 | operations  | hyderabad |
+|    30 | maintanance | pune      |
+|    40 | development | bangalore |
+|    50 | admin       | bangalore |
++-------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+//single row subquery
+wqtd of the emp whose doj is same as 'a'
+mysql> select * from employee where doj =(select doj from employee where name='a');
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email         | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com | female | developer   |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com | female | testing     |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+---------------+--------+-------------+
+3 rows in set (0.00 sec)
+
+wqtd second max salary from emp
+mysql> select max(salary) from employee where  salary<(select max(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|       60000 |
++-------------+
+1 row in set (0.00 sec)
+
+//multi row subquery
+wqtd name of the emp whose is working in location which has atleast one 'a'
+mysql> select name from employee where  depno in(select depno from department where location like '%a%');
++------+
+| name |
++------+
+| a    |
+| b    |
+| d    |
+| e    |
+| f    |
+| h    |
+| i    |
+| j    |
++------+
+8 rows in set (0.02 sec)
+
+wqtd all the record of the emp whose is working in admin,operations,development 
+mysql> select * from employee where  depno in(select depno from department where name in('admin','operations','development'));
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   1 | a    |  56218 | 1994-07-05 |   29 | 2019-02-19 | b+          |    10 |  60000 | psm@gmail.com     | female | developer   |
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   4 | d    |  56790 | 1994-07-05 |   29 | 2019-02-19 | b+          |    20 |  60000 | mty@gmail.com     | female | testing     |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
+|   8 | h    |  76841 | 2000-07-05 |   25 | 2019-02-10 | a-          |    40 |  20000 | ssp@gmail.com     | male   | testing     |
+|   9 | i    |  99882 | 1996-07-05 |   25 | 2019-02-10 | a-          |    50 |  20000 | rwp@gmail.com     | male   | tecksupport |
+|  10 | j    |  64098 | 1995-07-05 |   29 | 2019-02-19 | b+          |    40 |  60000 | hfg@gmail.com     | female | hr          |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+8 rows in set (0.00 sec)
+
+//group by
+wqtd max salary based on depno
+mysql> select max(salary) from employee group by depno;
++-------------+
+| max(salary) |
++-------------+
+|       60000 |
+|       60000 |
+|       30000 |
+|       60000 |
+|       80000 |
++-------------+
+5 rows in set (0.05 sec)
+
+wqtd the highest salary given to hr in each dept
+mysql> select max(salary) from employee where designation='hr' group by depno;
++-------------+
+| max(salary) |
++-------------+
+|       60000 |
++-------------+
+1 row in set (0.00 sec)
+
+//having
+wqtd depno which has atleast two employees are working
+mysql> select * from employee group by depno having count(*)>=2;
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+| eid | name | mobile | dob        | age  | doj        | blood_group | depno | salary | email             | gender | designation |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+|   2 | b    |  91122 | 1996-12-09 |   22 | 2018-09-10 | b+          |    20 |  30000 | pallavi@gmail.com | female | testing     |
+|   3 | c    |  87563 | 1998-12-09 |   25 | 2019-12-10 | o+          |    30 |  30000 | pavi@gmail.com    | female | tecksupport |
+|   5 | e    |  97543 | 1998-11-05 |   20 | 2019-03-10 | a-          |    40 |  10000 | qsp@gmail.com     | male   | manager     |
+|   6 | f    |  78954 | 1995-04-05 |   50 | 2016-03-10 | b-          |    50 |  80000 | jsp@gmail.com     | female | clerk       |
++-----+------+--------+------------+------+------------+-------------+-------+--------+-------------------+--------+-------------+
+4 rows in set (0.00 sec)
+
+
+mysql> insert into product_info values(300,'tv',30);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |       10 |
+|  300 | tv     |       30 |
++------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |       10 |
++------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> update  product_info set quantity=100 where pid=100;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |      100 |
++------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |       10 |
++------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> update  product_info set quantity=200 where pid=100;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |      200 |
++------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into product_info values(400,'book',40);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into product_info values(500,'pen',50);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |      200 |
+|  400 | book   |       40 |
+|  500 | pen    |       50 |
++------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into product_info values(600,'pencil',60);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint b;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |      200 |
+|  400 | book   |       40 |
+|  500 | pen    |       50 |
+|  600 | pencil |       60 |
++------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> rollback to a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select  * from product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|  100 | laptop |      200 |
+|  400 | book   |       40 |
+|  500 | pen    |       50 |
++------+--------+----------+
+3 rows in set (0.00 sec)
+
+//JOIN
+cross join
+mysql> select * from product_info cross join department;
++------+--------+----------+-------+-------------+-----------+
+| pid  | pname  | quantity | depno | name        | location  |
++------+--------+----------+-------+-------------+-----------+
+|  100 | laptop |      200 |    10 | admin       | mumbai    |
+|  100 | laptop |      200 |    20 | operations  | hyderabad |
+|  100 | laptop |      200 |    30 | maintanance | pune      |
+|  100 | laptop |      200 |    40 | development | bangalore |
+|  100 | laptop |      200 |    50 | admin       | bangalore |
+|  400 | book   |       40 |    10 | admin       | mumbai    |
+|  400 | book   |       40 |    20 | operations  | hyderabad |
+|  400 | book   |       40 |    30 | maintanance | pune      |
+|  400 | book   |       40 |    40 | development | bangalore |
+|  400 | book   |       40 |    50 | admin       | bangalore |
+|  500 | pen    |       50 |    10 | admin       | mumbai    |
+|  500 | pen    |       50 |    20 | operations  | hyderabad |
+|  500 | pen    |       50 |    30 | maintanance | pune      |
+|  500 | pen    |       50 |    40 | development | bangalore |
+|  500 | pen    |       50 |    50 | admin       | bangalore |
+|  700 | cable  |       70 |    10 | admin       | mumbai    |
+|  700 | cable  |       70 |    20 | operations  | hyderabad |
+|  700 | cable  |       70 |    30 | maintanance | pune      |
+|  700 | cable  |       70 |    40 | development | bangalore |
+|  700 | cable  |       70 |    50 | admin       | bangalore |
++------+--------+----------+-------+-------------+-----------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+body{
+    /* background-image: url(/image/black-1072366__340.jpg); */
+    /* width: 1000px; */
+    /* height:500px; */
+    background-size: cover;
+    font-size: 25px;
+    
+}
+.cent{
+    
+    text-align: center;
+    
+}
+input[type="text"]{
+    height: 45px;
+    width:500px;
+    margin-left: 400px;
+
+
+}
+
+img{
+    width: 215px;
+    height: 200px;
+    border: 3px solid blueviolet;
+    transition: all 50px;
+}
+img:hover{
+    transform: scale(1.1,1.1)
+}
+#para{
+    /* height: 5000px; */
+    /* width: 1200px; */
+    background-image: url(/image/textile-2918844__340.jpg);
+    background-size: cover;
+}
+#say{
+    padding-left: 300px;
+}
+
+/* #fix{
+    margin: 500px;
+    width: 100px;
+    height: 30px;
+} */
+
+#disc{
+    margin-left: 500px;
+    width: 250px;
+    height: 70px;
+    background-color: green;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+.al{
+    text-align: center;
+
+}
+#pass{
+    font-size: 20px;
+}
+#si{
+    border: 2px solid black
+}
+#ex{
+    
+}
+
+
+#te{
+    
+}
+
+
+
+

@@ -1,0 +1,14 @@
+<select name="" id="" (change)='getSr($event)'>
+    <option value="the-times-of-india">Times of India</option>
+    <option value="bbc-news">bbc news</option>
+    <option value="fox-news">fox news</option>
+    <option value="news24">news24</option>
+    <option value="the-hindu">the hindu</option>
+    <option value="usa-today">usa today</option>
+    <option value="mirror">mirror</option>
+</select> <br> <br>
+
+<div class="col-md-4 float-left mt-2 mb-5" *ngFor='let i of news'>
+    <a href="{{i.url}}"><img src="{{i.urlToImage}}" alt="" style="height: 400px;"></a>
+    <h1>{{i.title}}</h1>
+</div>

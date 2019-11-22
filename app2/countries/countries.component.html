@@ -1,0 +1,16 @@
+<select name="" id="" (change)='getNews($event)' style="margin:0 0 30px 500px;width: 500px;">
+    <option value="in">India</option>
+    <option value="us">United States</option>
+    <option value="ae">dubai</option>
+    <option value="ar">australia</option>
+</select><br><b><br>
+
+
+
+
+
+
+    <div class="col-md-4 float-left mt-6 mb-7 card card-body" *ngFor="let new of news">
+        <a href="{{new.url}}"><img src="{{new.urlToImage}}" alt="" style="height: 400px;"></a>
+        <h1>{{new.title}}</h1>
+    </div>

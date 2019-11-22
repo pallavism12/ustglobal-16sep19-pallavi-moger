@@ -1,0 +1,46 @@
+<!-- <p>property-binding works!</p> -->
+<h1 [innerText]='name'></h1>
+<img [src]="imgUrl" [class.rounded-circle]="isActive" alt="">
+
+<!-- <h1>{{address}}</h1> -->
+<!-- <h1 [style.color]="colorName">{{address}}</h1> -->
+<h1 [style.color]="colorName" [class.bg-info]="isActive" [class.bg-warning]="!isActive">{{address}}</h1>
+
+<table class="table table-dark table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th [attr.colspan]="colSpanValue">contact no</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>abc</td>
+            <td>35</td>
+            <td>488768505</td>
+            <td>867758595</td>
+        </tr>
+
+        <tr>
+            <td>abc</td>
+            <td>35</td>
+            <td>488768505</td>
+            <td>867758595</td>
+        </tr>
+
+        <tr>
+            <td>abc</td>
+            <td>35</td>
+            <td>488768505</td>
+            <td>867758595</td>
+        </tr>
+        <tr>
+            <td>abc</td>
+            <td>35</td>
+            <td>488768505</td>
+            <td>867758595</td>
+        </tr>
+
+    </tbody>
+</table>

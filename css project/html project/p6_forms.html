@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>p6 form</title>
+</head>
+<body>
+<form action="">
+    <label for="name">name</label><br>
+    <input type="text" name="name" id="name" placeholder="enter name" required><br>
+
+    <label for="email">email</label><br>
+    <input type="email" name="email" id="email" placeholder="enter email"><br>
+    
+    <label for="passward">passward</label><br>
+    <input type="password" name="passward" id="passward" placeholder="enter paaward" required><br>
+    
+    <label for="phone">phone</label><br>
+    <input type="tel" name="phone" id="phone" placeholder="enter phone"><br>
+    
+    <label for="gender">gender</label><br>
+    <input type="radio" name="gender" id="male">male
+    <input type="radio" name="gender" id="female">female
+    <input type="radio" name="gender" id="others">others<br>
+    <label for="month">joining month</label>
+    <select name="month" id="month"   required >
+        <option value="" selected disabled>select</option>
+        <option value="jan">jan</option>
+        <option value="feb">feb</option>
+        <option value="mar">mar</option>
+        <option value="apr">apr</option>
+        <option value="may">may</option>
+        <option value="jun">jun</option>
+        <option value="jul">jul</option>
+        <option value="aug">aug</option>
+        <option value="sep">sep</option>
+        <option value="oct">oct</option>
+        <option value="nov">nov</option>
+        <option value="dec">dec</option>
+        
+    </select><br>
+    <input type="checkbox" name="check" id="check">
+    <label for="check">I agree</label><br>
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</form>
+</body>
+</html>
+<!-- placeholder:to display the text in the field lighter -->
+<!-- required:if we leave the field blank, and submit ,it throws error -->
+<!-- disabled:for disabling the select option -->

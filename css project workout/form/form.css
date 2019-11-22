@@ -1,0 +1,54 @@
+form{
+    border: 2px solid black;
+    height: 300px;
+    width: 350px;
+    font-family: fantasy;
+    background-image: url(/image/desktop-3246124__340.jpg);
+    font-size: medium;
+    margin: 100px;
+    padding: 20px;
+    text-align: center;
+    border-bottom-color: gold;
+    
+    
+
+
+}
+body{
+    backface-visibility: visible;
+    background-color: coral;
+    background-image: url(/image/dog-2785074__340.jpg);
+    background-size: cover;
+
+}
+input[type="text"],input[type="password"]{
+  width: 220px;
+  height: 30px;  
+  border: 3px solid rgb(0, 255, 102);
+  /* border-radius: 50px; */
+  margin: 10ps;
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  outline: none;
+  color: brown
+}
+input[type="submit"]{
+ margin-top: 5px;
+ padding: 5px;
+ border-radius: 10px;
+ background-color: cornflowerblue;
+ text-align-last: auto;
+ outline: none;
+ color: blue;
+
+ /* text-emphasis-color: red; */
+
+
+}
+input[type="submit"]:hover{
+    background-color: darkgoldenrod;
+    border: 2px solid red;
+}
+
+}
