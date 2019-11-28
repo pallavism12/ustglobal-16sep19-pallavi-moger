@@ -1,0 +1,17 @@
+package com.ustglobal.jdbcmobileapp.app;
+
+import java.util.Scanner;
+
+public class AppClass {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("press 1 to show all contacts");
+		System.out.println("press 2 to search for contact using name");
+		System.out.println("press 3 to operate on contact");
+		
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.ustglobal.jdbcmobileapp.app;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.ustglobal.jdbcmobileapp.dao.ContactDAO;
+import com.ustglobal.jdbcmobileapp.dto.ContactBean;
+import com.ustglobal.jdbcmobileapp.util.ContactManager;
+
+public class AppClass {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("press 1 to show all contacts");
+		System.out.println("press 2 to search for contact using name");
+		System.out.println("press 3 to operate on contact");
+		
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+		
+		switch(ch) {
+		
+		case 1:ContactDAO im1=ContactManager.getAContactDetails();
+		List<ContactBean> result=im1.getAllNames();
+		
+		for(ContactBean bean:result) {
+			System.out.println(bean.getName());
+		}
+			break;
+			
+		case 2:
+			System.out.println("enter name..");
+			int choice=sc.nextInt();
+			
+			swit
+			
+			break;
+			
+		case 3:
+			break;
+		
+		}
+	}
+
+}

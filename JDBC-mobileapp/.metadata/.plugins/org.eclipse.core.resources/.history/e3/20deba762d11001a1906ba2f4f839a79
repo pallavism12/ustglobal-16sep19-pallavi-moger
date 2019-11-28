@@ -1,0 +1,23 @@
+package com.ustglobal.jdbcmobileapp.dao;
+
+import java.sql.*;
+import java.util.List;
+
+import com.ustglobal.jdbcmobileapp.dto.ContactBean;
+
+public class ContactDaoImpl implements ContactDAO{
+	String url="jdbc:mysql://localhost:3306/contactfile?user=root&password=root";
+	String sql="com.mysql.jdbc.Driver";
+	
+
+	@Override
+	public List<ContactBean> getAllNames() {
+		
+		
+		Connection conn=null;
+		Statement stmt=null;
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.ustglobal.jdbcmobileapp.dto;
+
+public class ContactBean {
+	private String name;
+	private int number;
+	private String group_name;
+
+}

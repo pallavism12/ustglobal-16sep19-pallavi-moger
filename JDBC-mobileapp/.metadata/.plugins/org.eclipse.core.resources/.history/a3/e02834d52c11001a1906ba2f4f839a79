@@ -1,0 +1,9 @@
+package com.ustglobal.jdbcmobileapp.dao;
+
+import java.util.List;
+
+public interface ContactDAO {
+	
+	public List<ContactBean> getNames();
+
+}
