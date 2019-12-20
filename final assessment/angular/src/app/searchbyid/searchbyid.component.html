@@ -1,0 +1,26 @@
+<div class="form-group card card-body col-md-4 offset-4 mt-3">
+    <input type="search" name="search" id="search" class="form-control" placeholder="Search by name" [(ngModel)]='search'>
+  </div>
+  <div class="card card-body">
+    <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+      <thead class="thead-dark">
+        <tr class="text-center text-dark">
+          <th>productID</th>
+          <th>Product Name</th>
+          <th>Categary</th>
+          <th></th>
+          <th>Publisher</th>
+          <th>Year Of Publication</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let book of books | filter: search'>
+          <td>{{book.bid}}</td>
+          <td>{{book.bookName}}</td>
+          <td>{{book.author1}}</td>
+          <td>{{book.author2}}</td>
+          <td>{{book.publisher}}</td>
+          <td>{{book.yearOfPublication}}</td>
+  

@@ -1,0 +1,49 @@
+<h2 class="text-center mt-2 text-dark"><i>Updating Products</i></h2>
+<div class="col-md-4 offset-md-4 card-body">
+    <form #updateProduct="ngForm" (ngSubmit)="submitForm(updateProduct)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" #name="ngModel" ngModel required >
+            <div *ngIf="name.invalid && name.touched">
+                <p *ngIf="name.errors.required" class="text-danger">*This field is mandatory
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="brand">Category</label>
+            <input type="text" name="Category" class="form-control" #Category="ngModel" ngModel required>
+            <div *ngIf="Category.invalid && Category.touched">
+                <p *ngIf="Category.errors.required" class="text-danger">*This Field is mandatory</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" name="price" class="form-control" #price="ngModel" ngModel required>
+            <div *ngIf="price.invalid && price.touched">
+                <p *ngIf="price.errors.required" class="text-danger">*This Field is mandatory</p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="warranty">Company</label>
+            <input type="text" name="warranty" class="form-control" #warranty="ngModel" ngModel required>
+              <!-- <div *ngIf="warranty.invalid && warranty.touched"> 
+                <p *ngIf="warranty.errors.required" class="text-danger">*This Field is mandatory</p>
+            </div>  -->
+        </div>
+        <div class="form-group">
+            <label for="stocks">Quantity</label>
+            <input type="number" name="quantity" class="form-control" #quantity="ngModel" ngModel required>
+            <!-- <div *ngIf="stocks.invalid && stocks.touched">
+                <p *ngIf="stocks.errors.required" class="text-danger">*This Field is mandatory</p>
+            </div> -->
+        </div><div class="btn-grp float-right">
+            
+            <button type="submit" class="btn btn-outline-primary"
+                [disabled]='addProduct.invalid'>Update</button>
+        </div>
+
+    </form>
+
+    </div>
+
+
