@@ -1,0 +1,49 @@
+<div class="bg-img">
+
+
+    <!-- <button class="btn btn-primary float-right mt-5 mr-5" (click)=goHome()>Home</button> -->
+    <h2 style="text-align: center; color: green;">{{msg}}</h2>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form action="" #bookform='ngForm' (ngSubmit)='addBook(bookform)' class="form-container">
+                    <h1 style="text-align: center;color:black;font-family: fantasy;"> Add Book</h1><br>
+                    <div class="form-group">
+                        <input type="number" name='bookId' #bookid='ngModel' ngModel class="form-control"
+                            placeholder="Enter Book Id ">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name='bookName' #bookName='ngModel' ngModel class="form-control"
+                            placeholder="Enter Book Name ">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name='author1' #author1='ngModel' ngModel class="form-control"
+                            placeholder="Enter Author 1 Name ">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name='author2' #author2='ngModel' ngModel class="form-control"
+                            placeholder="Enter Author 2 Name ">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name='publisher' #publisher='ngModel' ngModel class="form-control"
+                            placeholder="Enter Publisher ">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name='yearOfPublication' #yearOfPublication='ngModel' ngModel
+                            class="form-control" placeholder="Enter yearOfPublication ">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="reset" class="btn btn-secondary col-md-6 form-control">Reset</button>
+                        <button type="submit" class="btn btn-dark col-md-6 form-control float-right">Add
+                            Book</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>

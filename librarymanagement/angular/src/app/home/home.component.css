@@ -1,0 +1,9 @@
+.bg-img{
+    min-height: 93vh;
+   width: 100%;
+   background: url('../../../src/assets/img/lib.jpg') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   }
